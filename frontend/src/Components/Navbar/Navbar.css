@@ -1,6 +1,3 @@
-.my-navbar {
-  background-color: #353232; 
-}
 
 .my-navbar .navbar-brand,
 .my-navbar .nav-link {
@@ -11,6 +8,10 @@
 .my-navbar .nav-link:hover,
 .my-navbar .navbar-brand:hover{
     color: #8623bb;
+}
+
+.my-navbar .nav-link:focus{
+  color: #fff !important; 
 }
 
 .my-navbar .basic-navbar-nav .search-button
@@ -25,10 +26,10 @@
 
 .my-navbar .navbar-brand .nav-logo
 {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
     padding: 0px;
-    margin: 25px;
+    margin: 10px;
 }
 
 .my-navbar .navbar-toggler-icon

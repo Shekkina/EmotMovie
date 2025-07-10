@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 
 import './Navbar.css';
 import logo from '../../assets/EmotMovies_logo.jpg';
-
 import Tilt from "react-parallax-tilt";
 
 function NavigationBar() {
@@ -26,7 +25,8 @@ function NavigationBar() {
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#movies">Movies</Nav.Link>
             <Nav.Link href="#songs">Songs</Nav.Link>
-            <Nav.Link href="#aboutus">About us</Nav.Link>            
+            <Nav.Link href="#aboutus">About us</Nav.Link>  
+            <Nav.Link href="#loginSignup">Login/SignUp</Nav.Link>          
           </Nav>
 
           {/*Search bar */}
