@@ -41,15 +41,56 @@
   flex-wrap: wrap;
 }
 
-.hero-card {
-  border-radius: 20px;
-  max-width: 300px;
-  width: 100%;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+.scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
 }
 
-.hero-card:hover
-{
-  transform: translateY(-5px) scale(1.02); 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.card-scroll {
+    display: flex;
+    gap: 3rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 3rem;
 }
+
+.card-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-card {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: scale(1.05);
+}
+
+.scroll-icon {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  background: rgba(0,0,0,0.4);
+  padding: 0.5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.scroll-icon.left {
+  left: 15px;
+}
+
+.scroll-icon.right {
+  right: 15px;
+}
+
