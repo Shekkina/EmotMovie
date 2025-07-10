@@ -1,5 +1,5 @@
 .my-navbar {
-  background-color: #000; 
+  background-color: #353232; 
 }
 
 .my-navbar .navbar-brand,
@@ -21,4 +21,17 @@
 .my-navbar .basic-navbar-nav .search-button:hover
 {
     background: #8623bb;
+}
+
+.my-navbar .navbar-brand .nav-logo
+{
+    height: 80px;
+    width: 80px;
+    padding: 0px;
+    margin: 25px;
+}
+
+.my-navbar .navbar-toggler-icon
+{
+    background-color: #fff;
 }

@@ -5,12 +5,19 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import './Navbar.css';
+import logo from '../../assets/EmotMovies_logo.jpg';
+
+import Tilt from "react-parallax-tilt";
 
 function NavigationBar() {
   return (
     <Navbar fixed="top" expand="lg" bg="dark" className="my-navbar">
       <Container fluid>
-        <Navbar.Brand href="#home">EmotMovies</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <Tilt>
+            <img src={logo} alt="Logo" width="40" height="40" className='nav-logo' /> EmotMovies
+          </Tilt>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse className="basic-navbar-nav">
