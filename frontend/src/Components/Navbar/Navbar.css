@@ -1,0 +1,24 @@
+.my-navbar {
+  background-color: #000; 
+}
+
+.my-navbar .navbar-brand,
+.my-navbar .nav-link {
+  color: white;
+  transition: color 0.3s;
+}
+
+.my-navbar .nav-link:hover,
+.my-navbar .navbar-brand:hover{
+    color: #8623bb;
+}
+
+.my-navbar .basic-navbar-nav .search-button
+{
+    color: #8623bb;
+}
+
+.my-navbar .basic-navbar-nav .search-button:hover
+{
+    background: #8623bb;
+}
