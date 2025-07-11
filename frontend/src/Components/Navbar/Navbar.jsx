@@ -26,7 +26,7 @@ function NavigationBar() {
             <Nav.Link href="#movies">Movies</Nav.Link>
             <Nav.Link href="#songs">Songs</Nav.Link>
             <Nav.Link href="#aboutus">About us</Nav.Link>  
-            <Nav.Link href="#loginSignup">Login/SignUp</Nav.Link>          
+            <Nav.Link href="#login">Login/SignUp</Nav.Link>          
           </Nav>
 
           {/*Search bar */}
