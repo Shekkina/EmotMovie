@@ -1,5 +1,6 @@
 import './LoginRegister.css';
 import { FaUser, FaLock, FaEnvelope } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
 
 export const LoginRegister = () => {
 
@@ -15,7 +16,8 @@ export const LoginRegister = () => {
 
   return (
 
-    <div className={`wrapper${action}`}>
+    <div className="login-register-overlay">
+        <div className={`wrapper${action}`}>
 
         {/* Login Page */}
         <div className="form-box login">
@@ -38,7 +40,7 @@ export const LoginRegister = () => {
                 <button type='submit'>Login</button>
 
                 <div className="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
+                    <p>Don't have an account? <a href="#" onClick={registerLink}>Register</a></p>
                 </div>
             </form>
         </div>
@@ -71,6 +73,7 @@ export const LoginRegister = () => {
                 </div>
             </form>
         </div> 
+    </div>
     </div>
     
   )
