@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Herosection.css';
+import { useNavigate } from 'react-router-dom';
 import movie1 from '../../assets/movie1.jpg';
 import movie2 from '../../assets/movie2.png';
 import movie3 from '../../assets/movie3.jpg';
@@ -10,6 +11,7 @@ import movie6 from '../../assets/movie6.jpg';
 import movie7 from '../../assets/movie7.jpg';
 
 const Hero = () => {
+   const navigate = useNavigate();
 
   const scrollRef = useRef(null);
 
@@ -23,6 +25,10 @@ const Hero = () => {
 
   const movieCards = [movie1, movie2, movie3, movie4, movie5, movie6, movie7];
 
+  const handleStartClick = () => {
+    navigate('/mainhome');
+  };
+
   return (
     <section className="hero">
       <div className="hero-text">
@@ -30,7 +36,7 @@ const Hero = () => {
         <p>Join in the emotional journey of movies and songs. We help you to pick a genre according to your mood.</p>
 
         <div className="hero-buttons">
-          <button className="btn-start">Get Started</button>
+          <button className="btn-start" onClick={handleStartClick}>Get Started</button>
         </div>
       </div>
 
