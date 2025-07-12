@@ -50,3 +50,87 @@
   color: #ffffff;
   background-color: #1f1f1f;
 }
+/* Blur background when modal opens */
+.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Carousel Modal Styles */
+.carousel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 18, 18, 0.95);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.carousel-container {
+  width: 95%;
+  max-width: 1200px; /* ⬅️ Wider container */
+  position: relative;
+}
+
+
+.carousel-img {
+  width: 100%;
+  height: 500px; /* ⬅️ Increased height */
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(162, 89, 255, 0.6);
+}
+
+
+.carousel-slide {
+  padding: 10px;
+  outline: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: -30px;    
+  right: -30px;   
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  color: #a259ff;      
+  background: transparent !important; /* No background on hover */
+}
+/* Make carousel show 3D effect */
+.slick-slide {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform-style: preserve-3d;
+  opacity: 0.5;
+  transform: scale(0.8) perspective(1000px) rotateY(20deg);
+}
+
+.slick-center {
+  transform: scale(1) perspective(1000px) rotateY(0deg);
+  z-index: 10;
+  opacity: 1;
+}
+
+/* Optional: hide overflow clipping */
+.slick-list {
+  overflow: visible;
+}
+
+/* Prevent distortion on slide images */
+.carousel-slide {
+  transform-style: preserve-3d;
+}
