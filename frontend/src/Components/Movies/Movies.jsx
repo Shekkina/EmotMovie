@@ -3,6 +3,7 @@ import './Movies.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../Navbar/Navbar';
 import Slider from 'react-slick';
+import axios from 'axios';
 
 const genres = [
   { name: 'Action', image: 'action.jpg' },
@@ -15,23 +16,37 @@ const genres = [
 
 const Movies = () => {
   const [showCarousel, setShowCarousel] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [showTrailer, setShowTrailer] = useState(false);
 
-  const handleCardClick = (genreName) => {
+  const handleCardClick = async (genreName) => {
     if (genreName === 'Action') {
-      setShowCarousel(true);
+      try {
+        const res = await axios.get('http://localhost:5000/api/movies/action');
+        setMovies(res.data);
+        setShowCarousel(true);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
     }
   };
 
-  const closeCarousel = () => setShowCarousel(false);
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+    setShowTrailer(true);
+  };
 
-  const carouselImages = [
-    'action1.jpg',
-    'action2.jpg',
-    'action3.jpg',
-    'action4.jpg',
-    'action5.jpg',
-    'action6.jpg',
-  ];
+  const closeCarousel = () => {
+    setShowCarousel(false);
+    setSelectedMovie(null);
+    setShowTrailer(false);
+  };
+
+  const closeTrailer = () => {
+    setSelectedMovie(null);
+    setShowTrailer(false);
+  };
 
   const settings = {
     infinite: true,
@@ -80,17 +95,42 @@ const Movies = () => {
           <div className="carousel-container">
             <button className="close-btn" onClick={closeCarousel}>✖</button>
             <Slider {...settings}>
-              {carouselImages.map((img, idx) => (
-                <div key={idx} className="carousel-slide">
+              {movies.map((movie, idx) => (
+                <div key={idx} className="carousel-slide" onClick={() => handleMovieClick(movie)}>
                   <img
-                    src={require(`../../assets/${img}`)}
-                    alt={`Action ${idx + 1}`}
+                    src={movie.imageUrl}
+                    alt={movie.title}
                     className="carousel-img"
                   />
                 </div>
               ))}
             </Slider>
           </div>
+
+          {/* Trailer Modal */}
+          {showTrailer && selectedMovie && (
+            <div className="trailer-overlay">
+              <div className="trailer-card">
+                <button className="close-btn top-close" onClick={closeTrailer}>✖</button>
+                <iframe
+                  className="trailer-video"
+                  src={selectedMovie.trailerUrl}
+                  title={selectedMovie.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+                <a
+                  className="watch-btn"
+                  href={selectedMovie.watchLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ▶️ Watch Now
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>
