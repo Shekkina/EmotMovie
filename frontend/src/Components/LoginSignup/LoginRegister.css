@@ -1,0 +1,36 @@
+.auth-box {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  color: white;
+  z-index: 1000;
+  position: relative;
+}
+
+.custom-tabs .nav-link {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.custom-tabs .nav-link.active {
+  color: #a020f0;
+  background-color: transparent;
+  border: none;
+}
+
+.auth-box .form-label {
+  color: #f1f1f1;
+}
+
+.auth-box .btn-primary {
+  background-color: #6f42c1;
+  border: none;
+}
+
+.auth-box .btn-success {
+  background-color: #6f42c1;
+  border: none;
+}

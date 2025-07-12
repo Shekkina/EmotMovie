@@ -20,25 +20,16 @@
 
 .btn-start {
   background: #922cb1;
+  color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   margin-right: 1rem;
   border-radius: 30px;
+  transition: background 0.3s;
 }
 
-.btn-outline {
-  background: transparent;
-  border: 1px solid white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-}
-
-.hero-cards {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  gap: 1rem;
-  flex-wrap: wrap;
+.btn-start:hover {
+  background: #751f91;
 }
 
 .scroll-wrapper {
@@ -49,11 +40,11 @@
 }
 
 .card-scroll {
-    display: flex;
-    gap: 3rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 3rem;
+  display: flex;
+  gap: 3rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 3rem;
 }
 
 .card-scroll::-webkit-scrollbar {
@@ -77,13 +68,13 @@
   font-size: 20px;
   color: white;
   cursor: pointer;
-  z-index: 10;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   padding: 0.5rem;
   border-radius: 50%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;
 }
 
 .scroll-icon.left {
@@ -94,3 +85,42 @@
   right: 15px;
 }
 
+/* ✅ Background blur behind modal */
+.overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+}
+
+/* ✅ Login modal styling */
+.login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 40px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 450px;
+  color: white;
+}
+
+.close-modal {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+}

@@ -26,7 +26,7 @@
 
 .my-navbar .navbar-brand .nav-logo
 {
-    height: 70px;
+    height: 40px;
     width: 70px;
     padding: 0px;
     margin: 10px;
@@ -35,4 +35,8 @@
 .my-navbar .navbar-toggler-icon
 {
     background-color: #fff;
+}
+
+.me-auto{
+    font-size:medium;
 }
