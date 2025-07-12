@@ -1,82 +1,62 @@
-import './LoginRegister.css';
-import { FaUser, FaLock, FaEnvelope } from 'react-icons/fa';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import "./LoginRegister.css";
+import { Button, Form, Tabs, Tab, Container } from "react-bootstrap";
 
-export const LoginRegister = () => {
-
-    const [action, setAction] = useState('');
-
-    const registerLink = () => {
-        setAction('active');
-    };
-
-    const loginLink = () => {
-        setAction('');
-    };
+function LoginRegister() {
+  const [key, setKey] = useState("login");
 
   return (
+    <div className="auth-box">
+      <Container>
+        <Tabs
+          activeKey={key}
+          onSelect={(k) => setKey(k)}
+          className="mb-4 custom-tabs"
+        >
+          <Tab eventKey="login" title="Login">
+            <Form>
+              <Form.Group controlId="formLoginEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" />
+              </Form.Group>
 
-    <div className="login-register-overlay">
-        <div className={`wrapper${action}`}>
+              <Form.Group controlId="formLoginPassword" className="mt-3">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
 
-        {/* Login Page */}
-        <div className="form-box login">
-            <form action="">
-                <h1>Login</h1>
-                <div className="input-box">
-                    <input type="text" placeholder='Username' required />
-                    <FaUser className='icon'/>
-                </div>
-                <div className="input-box">
-                    <input type="password" placeholder='Password' required />
-                    <FaLock className='icon'/>
-                </div>
+              <Button variant="primary" type="submit" className="w-100 mt-4">
+                Login
+              </Button>
+            </Form>
+          </Tab>
 
-                <div className="remember-forgot">
-                    <label><input type="checkbox" />Remember me</label>
-                    <a href="#">Forgot password?</a>
-                </div>
+          <Tab eventKey="signup" title="Sign Up">
+            <Form>
+              <Form.Group controlId="formSignupName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter name" />
+              </Form.Group>
 
-                <button type='submit'>Login</button>
+              <Form.Group controlId="formSignupEmail" className="mt-3">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" />
+              </Form.Group>
 
-                <div className="register-link">
-                    <p>Don't have an account? <a href="#" onClick={registerLink}>Register</a></p>
-                </div>
-            </form>
-        </div>
+              <Form.Group controlId="formSignupPassword" className="mt-3">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
 
-        {/* Register Page */}
-        <div className="form-box register">
-            <form action="">
-                <h1>Registration</h1>
-                <div className="input-box">
-                    <input type="text" placeholder='Username' required />
-                    <FaUser className='icon'/>
-                </div>
-                <div className="input-box">
-                    <input type="email" placeholder='Email' required />
-                    <FaEnvelope className='icon'/>
-                </div>
-                <div className="input-box">
-                    <input type="password" placeholder='Password' required />
-                    <FaLock className='icon'/>
-                </div>
-
-                <div className="remember-forgot">
-                    <label><input type="checkbox" />I agree to the terms & conditions</label>
-                </div>
-
-                <button type='submit'>Register</button>
-
-                <div className="register-link">
-                    <p>Already have an account? <a href="#" onClick={loginLink}>Login</a></p>
-                </div>
-            </form>
-        </div> 
+              <Button variant="success" type="submit" className="w-100 mt-4">
+                Sign Up
+              </Button>
+            </Form>
+          </Tab>
+        </Tabs>
+      </Container>
     </div>
-    </div>
-    
-  )
-};
+  );
+}
 
 export default LoginRegister;
