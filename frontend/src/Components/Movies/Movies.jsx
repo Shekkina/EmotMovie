@@ -19,16 +19,16 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
+  const [currentGenre, setCurrentGenre] = useState('');
 
   const handleCardClick = async (genreName) => {
-    if (genreName === 'Action') {
-      try {
-        const res = await axios.get('http://localhost:5000/api/movies/action');
-        setMovies(res.data);
-        setShowCarousel(true);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      }
+    try {
+      const res = await axios.get(`http://localhost:5000/api/movies/${genreName.toLowerCase()}`);
+      setMovies(res.data);
+      setCurrentGenre(genreName);
+      setShowCarousel(true);
+    } catch (error) {
+      console.error('Error fetching movies:', error);
     }
   };
 
@@ -107,7 +107,6 @@ const Movies = () => {
             </Slider>
           </div>
 
-          {/* Trailer Modal */}
           {showTrailer && selectedMovie && (
             <div className="trailer-overlay">
               <div className="trailer-card">
