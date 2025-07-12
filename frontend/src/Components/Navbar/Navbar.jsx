@@ -3,10 +3,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Tilt from "react-parallax-tilt";
+import { Link } from 'react-router-dom';
+
 
 import './Navbar.css';
 import logo from '../../assets/EmotMovies_logo.jpg';
-import Tilt from "react-parallax-tilt";
+//import LoginSignup from './Components/LoginSignup/LoginRegister.jsx';
+
 
 function NavigationBar() {
   return (
@@ -26,7 +30,7 @@ function NavigationBar() {
             <Nav.Link href="#movies">Movies</Nav.Link>
             <Nav.Link href="#songs">Songs</Nav.Link>
             <Nav.Link href="#aboutus">About us</Nav.Link>  
-            <Nav.Link href="#loginSignup">Login/SignUp</Nav.Link>          
+            <Nav.Link as={Link} to="/loginsignup">Login/SignUp</Nav.Link>         
           </Nav>
 
           {/*Search bar */}
