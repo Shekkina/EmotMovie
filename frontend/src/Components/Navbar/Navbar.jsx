@@ -27,7 +27,7 @@ function NavigationBar() {
             {/* Navbar elements */}
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/mainhome">Home</Nav.Link>
-            <Nav.Link href="#movies">Movies</Nav.Link>
+            <Nav.Link as={Link} to="/movies">Movies</Nav.Link>
             <Nav.Link href="#songs">Songs</Nav.Link>
             <Nav.Link href="#aboutus">About us</Nav.Link>  
             <Nav.Link as={Link} to="/loginsignup">Login/SignUp</Nav.Link>         
