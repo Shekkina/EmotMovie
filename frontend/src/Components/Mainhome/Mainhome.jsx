@@ -1,5 +1,6 @@
 
 import Navbar from '../Navbar/Navbar.jsx';
+import Carousel from '../../Components/CarouselsPage/Carousel.jsx';
 
 import { FaCameraRetro,FaFilm, FaMusic } from 'react-icons/fa';
 
@@ -67,6 +68,8 @@ const MainHome = () => {
           </div>
         </div>
       )}
+
+      <Carousel />
     </div>
   );
 };
