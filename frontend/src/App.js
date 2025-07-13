@@ -5,6 +5,7 @@ import Movies from './Components/Movies/Movies.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import RecommendationPage from './Components/MovieRecommend/Recommendation.jsx';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mainhome" element={<MainHome />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/recommendations" element={<RecommendationPage />} />
       </Routes>
     </Router>
     </div>

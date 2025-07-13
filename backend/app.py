@@ -1,11 +1,17 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from pymongo import MongoClient
 import cv2
 import numpy as np
 import base64
 
 app = Flask(__name__)
 CORS(app)
+
+MONGO_URI = "mongodb+srv://shekkina:shekki545@cluster0.0zraa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+client = MongoClient(MONGO_URI)
+db = client["emotion_movies"]
+movies_collection = db["movies"]
 
 # Load Haar cascades
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
@@ -18,7 +24,7 @@ def detect_emotion(face_img_gray, face_img_color):
     mouth_region_gray = face_img_gray[int(h*0.65):h, int(w*0.2):int(w*0.8)]
     mouth_region_color = face_img_color[int(h*0.65):h, int(w*0.2):int(w*0.8)]
 
-    # 1. Detect smile (teeth showing) → happy
+    # 1. Detect smile → happy
     smiles = smile_cascade.detectMultiScale(
         mouth_region_gray,
         scaleFactor=1.7,
@@ -28,21 +34,16 @@ def detect_emotion(face_img_gray, face_img_color):
     if len(smiles) > 0:
         return "happy"
 
-    # 2. Check mouth openness (vertical edge/pixel gap ratio)
+    # 2. Check mouth openness → sad
     _, thresholded = cv2.threshold(mouth_region_gray, 50, 255, cv2.THRESH_BINARY_INV)
     contours, _ = cv2.findContours(thresholded, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    mouth_open = False
     for cnt in contours:
         x, y, cw, ch = cv2.boundingRect(cnt)
-        if ch > 10 and cw > 10 and ch > cw:  # Taller than wide = open mouth
-            mouth_open = True
-            break
+        if ch > 10 and cw > 10 and ch > cw:
+            return "sad"
 
-    if mouth_open:
-        return "sad"
-
-    # 3. Default
+    # 3. Default → neutral
     return "neutral"
 
 @app.route('/detect_emotion', methods=['POST'])
@@ -68,12 +69,15 @@ def detect_emotion_route():
             face_color = img[y:y+h, x:x+w]
             emotion = detect_emotion(face_gray, face_color)
 
+            movie_recs = list(movies_collection.find({"emotion": emotion}, {"_id": 0}))
+
             results.append({
                 "x": int(x),
                 "y": int(y),
                 "width": int(w),
                 "height": int(h),
-                "emotion": emotion
+                "emotion": emotion,
+                "recommendations": movie_recs
             })
 
         return jsonify({"results": results})
