@@ -1,18 +1,22 @@
-const express = require('express');
+const express = require('express'); 
 const router = express.Router();
 const Movie = require('../models/Movie');
 
-// GET all action movies
-router.get('/action', async (req, res) => {
+// GET movies by genre (dynamic route)
+router.get('/:genre', async (req, res) => {
+  const genreParam = req.params.genre;
+
   try {
-    const actionMovies = await Movie.find({ genre: 'Action' });
-    res.json(actionMovies);
+    // Capitalize first letter to match your DB values: "Action", "Drama", etc.
+    const genre = genreParam.charAt(0).toUpperCase() + genreParam.slice(1).toLowerCase();
+    const movies = await Movie.find({ genre });
+    res.json(movies);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// OPTIONAL: POST route to add new movie
+// POST route to add a new movie
 router.post('/', async (req, res) => {
   const { title, genre, imageUrl, trailerUrl, watchLink } = req.body;
 

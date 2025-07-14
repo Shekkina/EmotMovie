@@ -95,23 +95,23 @@
 
 .close-btn {
   position: absolute;
-  top: -30px;    
-  right: -30px;   
+  top: 10px;
+  right: 10px;
   background: transparent;
-  color: #ffffff;
+  color: #fff;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
-  z-index: 1000;
-  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 1001;
+  box-shadow: none;
 }
 
 .close-btn:hover {
   transform: scale(1.2);
-  color: #a259ff;      
-  background: transparent !important; /* No background on hover */
+  color: #a259ff;
 }
-/* Make carousel show 3D effect */
+
+/* 3D effect for carousel */
 .slick-slide {
   transition: transform 0.5s ease, opacity 0.5s ease;
   transform-style: preserve-3d;
@@ -124,6 +124,7 @@
   z-index: 10;
   opacity: 1;
 }
+
 
 /* Optional: hide overflow clipping */
 .slick-list {
