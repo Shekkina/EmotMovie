@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const movieRoutes = require('./routes/movie');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
@@ -18,16 +19,17 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/movies', movieRoutes);
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/emotmovies', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 })
 .then(() => {
-  console.log('✅ MongoDB connected');
+  console.log('✅ Connected to MongoDB Atlas');
   app.listen(PORT, () => {
     console.log(`🚀 Server running at http://localhost:${PORT}`);
   });
 })
 .catch((err) => {
-  console.error('❌ MongoDB connection failed:', err);
-});
+  console.error('❌ MongoDB Atlas connection failed:', err);
+})
+
